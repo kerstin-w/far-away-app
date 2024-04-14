@@ -1,10 +1,16 @@
+/**
+ * The App function is a React component that renders a logo, a form, a packing list, and stats within
+ * a div with the class name "app".
+ */
 export default function App() {
-  <div className="app">
-    <Logo />
-    <Form />
-    <PackingList />
-    <Stats />
-  </div>;
+  return (
+    <div className="app">
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
+    </div>
+  );
 }
 
 function Logo() {
