@@ -29,37 +29,46 @@ function Form() {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  const [error, setError] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!description) return;
+    if (!description) {
+      setError("Description cannot be empty 🚨");
+      return;
+    }
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
 
     setDescription("");
     setQuantity(1);
+    setError("");
   }
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>
-      <h3>What do you need for your 😍 trip?</h3>
-      <select
-        value={quantity}
-        onChange={(e) => setQuantity(Number(e.target.value))}
-      >
-        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
-          <option value={num} key={num}>
-            {num}
-          </option>
-        ))}
-      </select>
-      <input
-        type="text"
-        placeholder="Item..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button>Add</button>
+      <div className="form-first-row">
+        <h3>What do you need for your 😍 trip?</h3>
+        <select
+          value={quantity}
+          onChange={(e) => setQuantity(Number(e.target.value))}
+        >
+          {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+            <option value={num} key={num}>
+              {num}
+            </option>
+          ))}
+        </select>
+        <input
+          type="text"
+          placeholder="Item..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button>Add</button>
+      </div>
+      <div>{error && <p className="error">{error}</p>}</div>
     </form>
   );
 }
