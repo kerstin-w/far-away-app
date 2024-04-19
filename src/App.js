@@ -34,8 +34,14 @@ function Form() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    /* Performing form validation. */
     if (!description) {
       setError("Description cannot be empty 🚨");
+      const inputField = document.querySelector('input[type="text"]');
+      inputField.classList.add("bounce");
+      setTimeout(() => {
+        inputField.classList.remove("bounce");
+      }, 1000);
       return;
     }
 
