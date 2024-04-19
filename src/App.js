@@ -75,6 +75,13 @@ function Logo() {
   return <h1>🏝️ Far Away 🧳</h1>;
 }
 
+/**
+ * The Form handles input for adding items to a trip list, including form validation and submission.
+ * @returns The `Form` component is returning a form element with input fields for the user to enter a
+ * description of an item and select a quantity, along with a button to add the item. The form also
+ * displays an error message if the description field is empty during form submission. When the form is
+ * submitted, the `handleSubmit` function is called to handle the form submission logic.
+ */
 function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
@@ -129,6 +136,13 @@ function Form({ onAddItems }) {
   );
 }
 
+/**
+ * The PackingList function sorts and displays a list of items with options to delete,
+ * toggle, and clear the list.
+ * @returns The `PackingList` component is being returned. It displays a list of items with sorting
+ * options and a button to clear the list. The items are sorted based on the selected sorting criteria
+ * (input order, description, status, quantity). Each item in the list can be deleted or toggled.
+ */
 function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
   const [sortBy, setSortBy] = useState("input");
 
@@ -180,10 +194,12 @@ function PackingList({ items, onDeleteItem, onToggleItem, onClearList }) {
 }
 
 /**
- * The Item function renders a list item with a quantity, description, and a button in JavaScript.
- * @returns The `Item` function is returning a list item (`<li>`) element containing the quantity and
- * description of the item, with a strikethrough style applied if the item is marked as packed.
- * Additionally, there is a button with a cross mark emoji inside the list item.
+ * The Item function displays a checkbox, item quantity and description, and a delete button
+ * for a given item.
+ * @returns The `Item` function is returning a JSX element representing a list item (`<li>`). Inside
+ * the list item, there is an input checkbox, a span element displaying the quantity and description of
+ * the item (with a line-through style if the item is marked as packed), and a button with a delete
+ * icon. The checkbox is tied to the `onToggleItem` function to handle toggling the
  */
 function Item({ item, onDeleteItem, onToggleItem }) {
   return (
